@@ -1,0 +1,45 @@
+﻿@model waCentralRecargas.Models.RecargasViewModel.Recargas
+<div class="row">
+    <div class="col-md-6">
+        <h5>Ingresa los datos para generar la recarga</h5>
+        <img src="@ViewBag.imgCarrier" class="img-thumbnail" />
+        <br />
+        <p class="text-info">@ViewBag.bondades</p>
+    </div>
+    <div class="col-md-6">
+        <form method="post">
+            <h5>Llene los campos solicitados.</h5>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Monto"></label>
+                <select class="form-control" asp-for="Monto">
+                    @foreach (var item in ViewBag.listMontos)
+                    {
+                        <option value="@item.idservdet">@item.monto</option>
+                    }
+                </select>
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Confirmacion"></label>
+                <input asp-for="Confirmacion" class="form-control" />
+                <span asp-validation-for="Confirmacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button id="btnconfirm" type="submit" class="btn btn-success">Enviar recarga</button>
+            </div>
+            <div class="form-group">
+                <p class="text-center">Al hacer click en Enviar recarga, recuerde que no hay devoluciones ni cancelaciones.</p>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

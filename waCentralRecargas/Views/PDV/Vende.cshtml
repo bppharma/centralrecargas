@@ -1,0 +1,52 @@
+﻿<div class="row">
+    <h4>Venta</h4>
+    <p>Selecciona el tipo de servicio del que quieres realizar la venta.</p>
+</div>
+<div class="row">
+    <ul class="nav nav-tabs" id="tabVenta" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recargas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Servicios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Pines</a>
+        </li>
+    </ul>
+    <form name="frmVende" id="frmVende" asp-action="Vende" method="post">
+        <div class="tab-content" id="tabVentaContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                    <h5>Recuerde ofrecer los paquetes del carrier solicitado.</h5>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a onclick="DoStep(1);"><img src="~/images/Logos/logo_telcel.png" class="img-thumbnail" /></a>
+                        </div>
+                        <div class="col-md-3">
+                            <a onclick="DoStep(2);"><img src="~/images/Logos/logo_att.png" class="img-thumbnail" /></a>
+                        </div>
+                        <div class="col-md-3">
+                            <a onclick="DoStep(3);"><img src="~/images/Logos/logo_movistar.png" class="img-thumbnail" /></a>
+                        </div>
+                        <div class="col-md-3">
+                            <a onclick="DoStep(4);"><img src="~/images/Logos/logo_unefon.png" class="img-thumbnail" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function DoStep(Carrier) {
+        var input = document.createElement('input');
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "carrier");
+        input.setAttribute("value", Carrier);
+        document.getElementById("frmVende").appendChild(input);
+        document.getElementById("frmVende").submit();
+    }
+</script>
